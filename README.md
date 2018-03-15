@@ -67,21 +67,21 @@ e.g.
     <td><tt></tt></td>
   </tr>
   <tr>
-    <td><tt>['keepalived-ec2']['unicast_src_ip']</tt></td>
+    <td><tt>['keepalived-ec2']['master_ip']</tt></td>
     <td>String</td>
-    <td>Source IP address</td>
+    <td>MASTER's IP address</td>
     <td><tt></tt></td>
   </tr>
   <tr>
-    <td><tt>['keepalived-ec2']['unicast_peer']</tt></td>
+    <td><tt>['keepalived-ec2']['backup_ip']</tt></td>
     <td>String</td>
-    <td>unicast_peer's IP address</td>
+    <td>BACKUP's IP address</td>
     <td><tt></tt></td>
   </tr>
   <tr>
     <td><tt>['keepalived-ec2']['interface']</tt></td>
     <td>String</td>
-    <td>Interface of NIC with unicast_src_ip</td>
+    <td>Interface of NIC with my IP</td>
     <td><tt></tt></td>
   </tr>
   <tr>
@@ -124,8 +124,8 @@ e.g.
     "interface": "eth1",
     "state": "MASTER",
     "virtual_router_id": "51",
-    "unicast_src_ip": "10.0.0.110",
-    "unicast_peer": "10.0.0.210"
+    "master_ip": "10.0.0.110",
+    "backup_ip": "10.0.0.210"
   },
 }
 ```
@@ -146,8 +146,8 @@ e.g.
     "interface": "eth1",
     "state": "BACKUP",
     "virtual_router_id": "51",
-    "unicast_src_ip": "10.0.0.210",
-    "unicast_peer": "10.0.0.110"
+    "master_ip": "10.0.0.110",
+    "backup_ip": "10.0.0.210"
   },
 }
 ```
