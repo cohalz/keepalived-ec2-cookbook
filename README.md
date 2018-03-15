@@ -37,10 +37,64 @@ e.g.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['keepalived-ec2']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td><tt>['keepalived-ec2']['bag_name']</tt></td>
+    <td>String</td>
+    <td>bag_name</td>
+    <td><tt></tt></td>
+  </tr>
+  <tr>
+    <td><tt>['keepalived-ec2']['item_name']</tt></td>
+    <td>String</td>
+    <td>item_name</td>
+    <td><tt></tt></td>
+  </tr>
+  <tr>
+    <td><tt>['keepalived-ec2']['chk_script']</tt></td>
+    <td>String</td>
+    <td>vrrp_script</td>
+    <td><tt></tt></td>
+  </tr>
+  <tr>
+    <td><tt>['keepalived-ec2']['eni']</tt></td>
+    <td>String</td>
+    <td>eni</td>
+    <td><tt></tt></td>
+  </tr>
+  <tr>
+    <td><tt>['keepalived-ec2']['device_index']</tt></td>
+    <td>String</td>
+    <td>device_index</td>
+    <td><tt></tt></td>
+  </tr>
+  <tr>
+    <td><tt>['keepalived-ec2']['interface']</tt></td>
+    <td>String</td>
+    <td>interface</td>
+    <td><tt></tt></td>
+  </tr>
+  <tr>
+    <td><tt>['keepalived-ec2']['state']</tt></td>
+    <td>String</td>
+    <td>MASTER or BACKUP</td>
+    <td><tt></tt></td>
+  </tr>
+  <tr>
+    <td><tt>['keepalived-ec2']['virtual_router_id']</tt></td>
+    <td>String</td>
+    <td>virtual_router_id</td>
+    <td><tt></tt></td>
+  </tr>
+  <tr>
+    <td><tt>['keepalived-ec2']['unicast_src_ip']</tt></td>
+    <td>String</td>
+    <td>unicast_src_ip</td>
+    <td><tt></tt></td>
+  </tr>
+  <tr>
+    <td><tt>['keepalived-ec2']['unicast_peer']</tt></td>
+    <td>String</td>
+    <td>unicast_peer</td>
+    <td><tt></tt></td>
   </tr>
 </table>
 
@@ -53,12 +107,47 @@ TODO: Write usage instructions for each cookbook.
 e.g.
 Just include `keepalived-ec2` in your node's `run_list`:
 
+#### MASTER
 ```json
 {
-  "name":"my_node",
+  "name":"master_node",
   "run_list": [
     "recipe[keepalived-ec2]"
-  ]
+  ],
+  "keepalived-ec2" :{
+    "bag_name": "bag_name",
+    "item_name": "item_name",
+    "chk_script": "pidof haproxy",
+    "eni": "eni-xxxxxxxx",
+    "device_index": "2",
+    "interface": "eth1",
+    "state": "MASTER",
+    "virtual_router_id": "51",
+    "unicast_src_ip": "10.0.0.110",
+    "unicast_peer": "10.0.0.210"
+  },
+}
+```
+
+#### BACKUP
+```json
+{
+  "name":"backup_node",
+  "run_list": [
+    "recipe[keepalived-ec2]"
+  ],
+  "keepalived-ec2" :{
+    "bag_name": "bag_name",
+    "item_name": "item_name",
+    "chk_script": "pidof haproxy",
+    "eni": "eni-xxxxxxxx",
+    "device_index": "2",
+    "interface": "eth1",
+    "state": "BACKUP",
+    "virtual_router_id": "51",
+    "unicast_src_ip": "10.0.0.210",
+    "unicast_peer": "10.0.0.110"
+  },
 }
 ```
 
@@ -77,4 +166,3 @@ e.g.
 ## License and Authors
 
 Authors: TODO: List authors
-

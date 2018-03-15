@@ -7,8 +7,8 @@
 # All rights reserved - Do Not Redistribute
 #
 raise "Attribute: 'keepalived-ec2' is not defined." if node['keepalived-ec2'].nil?
-raise "Attribute: 'data_bag' is not defined." if node['keepalived-ec2']['data_bag'].nil?
-raise "Attribute: 'data_bag_name' is not defined." if node['keepalived-ec2']['data_bag_name'].nil?
+raise "Attribute: 'bag_name' is not defined." if node['keepalived-ec2']['bag_name'].nil?
+raise "Attribute: 'item_name' is not defined." if node['keepalived-ec2']['item_name'].nil?
 raise "Attribute: 'chk_script' is not defined." if node['keepalived-ec2']['chk_script'].nil?
 raise "Attribute: 'eni' is not defined." if node['keepalived-ec2']['eni'].nil?
 raise "Attribute: 'device_index' is not defined." if node['keepalived-ec2']['device_index'].nil?
@@ -18,7 +18,7 @@ raise "Attribute: 'virtual_router_id' is not defined." if node['keepalived-ec2']
 raise "Attribute: 'unicast_src_ip' is not defined." if node['keepalived-ec2']['unicast_src_ip'].nil?
 raise "Attribute: 'unicast_peer' is not defined." if node['keepalived-ec2']['unicast_peer'].nil?
 
-bash 'install grabeni' do 
+bash 'install grabeni' do
   user 'root'
   cwd  '/home/ec2-user'
   code <<-EOH
@@ -31,7 +31,7 @@ bash 'install grabeni' do
   not_if { ::File.exist?('/home/ec2-user/grabeni_linux_amd64.tar.gz') }
 end
 
-credentials = Chef::EncryptedDataBagItem.load("#{node['keepalived-ec2']['data_bag']}","#{node['keepalived-ec2']['data_bag_name']}")
+credentials = Chef::EncryptedDataBagItem.load("#{node['keepalived-ec2']['bag_name']}","#{node['keepalived-ec2']['item_name']}")
 
 include_recipe 'keepalived'
 
@@ -63,4 +63,4 @@ end
 
 service "keepalived" do
   supports :start => true,:realod => true, :restart => true, :enable => true
-end  
+end
