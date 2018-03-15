@@ -1,9 +1,6 @@
 # keepalived-ec2 Cookbook
 
-TODO: Enter the cookbook description here.
-
-e.g.
-This cookbook makes your favorite breakfast sandwich.
+A cookook for using keepalived in EC2-VPC environment.
 
 ## Requirements
 
@@ -12,7 +9,7 @@ TODO: List your cookbook requirements. Be sure to include any requirements this 
 e.g.
 ### Platforms
 
-- SandwichOS
+- Amazon Linux
 
 ### Chef
 
@@ -20,7 +17,7 @@ e.g.
 
 ### Cookbooks
 
-- `toaster` - keepalived-ec2 needs toaster to brown your bagel.
+- `keepalived` - keepalived-ec2 needs keepalived cookook.
 
 ## Attributes
 
