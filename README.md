@@ -4,9 +4,6 @@ A cookook for using keepalived in EC2-VPC environment.
 
 ## Requirements
 
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
-
-e.g.
 ### Platforms
 
 - Amazon Linux
@@ -46,6 +43,12 @@ e.g.
     <td><tt></tt></td>
   </tr>
   <tr>
+    <td><tt>['keepalived-ec2']['virtual_router_id']</tt></td>
+    <td>String</td>
+    <td>virtual_router_id</td>
+    <td><tt></tt></td>
+  </tr>
+  <tr>
     <td><tt>['keepalived-ec2']['chk_script']</tt></td>
     <td>String</td>
     <td>vrrp_script</td>
@@ -54,19 +57,31 @@ e.g.
   <tr>
     <td><tt>['keepalived-ec2']['eni']</tt></td>
     <td>String</td>
-    <td>eni</td>
+    <td>ENI ID to change in case of failover</td>
     <td><tt></tt></td>
   </tr>
   <tr>
     <td><tt>['keepalived-ec2']['device_index']</tt></td>
     <td>String</td>
-    <td>device_index</td>
+    <td>Number of eth#{n} you want to set</td>
+    <td><tt></tt></td>
+  </tr>
+  <tr>
+    <td><tt>['keepalived-ec2']['unicast_src_ip']</tt></td>
+    <td>String</td>
+    <td>Source IP address</td>
+    <td><tt></tt></td>
+  </tr>
+  <tr>
+    <td><tt>['keepalived-ec2']['unicast_peer']</tt></td>
+    <td>String</td>
+    <td>unicast_peer's IP address</td>
     <td><tt></tt></td>
   </tr>
   <tr>
     <td><tt>['keepalived-ec2']['interface']</tt></td>
     <td>String</td>
-    <td>interface</td>
+    <td>Interface of NIC with unicast_src_ip</td>
     <td><tt></tt></td>
   </tr>
   <tr>
@@ -75,24 +90,8 @@ e.g.
     <td>MASTER or BACKUP</td>
     <td><tt></tt></td>
   </tr>
-  <tr>
-    <td><tt>['keepalived-ec2']['virtual_router_id']</tt></td>
-    <td>String</td>
-    <td>virtual_router_id</td>
-    <td><tt></tt></td>
-  </tr>
-  <tr>
-    <td><tt>['keepalived-ec2']['unicast_src_ip']</tt></td>
-    <td>String</td>
-    <td>unicast_src_ip</td>
-    <td><tt></tt></td>
-  </tr>
-  <tr>
-    <td><tt>['keepalived-ec2']['unicast_peer']</tt></td>
-    <td>String</td>
-    <td>unicast_peer</td>
-    <td><tt></tt></td>
-  </tr>
+
+
 </table>
 
 ## Usage
@@ -108,11 +107,6 @@ e.g.
 ```
 
 ### keepalived-ec2::default
-
-TODO: Write usage instructions for each cookbook.
-
-e.g.
-Just include `keepalived-ec2` in your node's `run_list`:
 
 #### MASTER
 ```json
@@ -172,4 +166,4 @@ e.g.
 
 ## License and Authors
 
-Authors: TODO: List authors
+Authors: cohalz
