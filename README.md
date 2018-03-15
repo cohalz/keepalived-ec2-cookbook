@@ -97,6 +97,16 @@ e.g.
 
 ## Usage
 
+### Create a Data Bag
+```
+{
+  "id": "item_name"
+  "AWS_ACCESS_KEY_ID": "XXXXXXXXXXXXXXXXXXXX",
+  "AWS_SECRET_ACCESS_KEY": "XXXXXXXXXXXXXXXXXXXX"
+  "AWS_REGION": "XXXXXXXXXXXXXXXXXXXX"
+}
+```
+
 ### keepalived-ec2::default
 
 TODO: Write usage instructions for each cookbook.
