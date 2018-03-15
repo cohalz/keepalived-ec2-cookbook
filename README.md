@@ -1,4 +1,4 @@
-# cookbook_keepalived_ec2vpc Cookbook
+# keepalived-ec2 Cookbook
 
 A cookook for using keepalived in EC2-VPC environment.
 
