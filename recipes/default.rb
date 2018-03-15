@@ -51,6 +51,8 @@ case node['keepalived-ec2']['state']
     priority = 101
   when "BACKUP" then
     priority = 100
+  else
+    raise "Attribute: 'state' must be 'MASTER' or 'BACKUP'."
 end
 
 template '/etc/keepalived/conf.d/keepalived.conf' do
