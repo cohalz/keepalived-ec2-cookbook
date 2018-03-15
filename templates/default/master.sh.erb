@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export AWS_ACCESS_KEY_ID="<%= @access_key %>"
+export AWS_SECRET_ACCESS_KEY="<%= @secret_access_key %>"
+export AWS_REGION="<%= @region %>"
+grabeni grab -d <%= node['keepalived-ec2']['device_index'] %> -f "<%= node['keepalived-ec2']['eni'] %>"
