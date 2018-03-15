@@ -8,9 +8,9 @@ vrrp_instance VI_1 {
     state <%= node['keepalived-ec2']['state'] %>
     virtual_router_id <%= node['keepalived-ec2']['virtual_router_id'] %>  # Assign one ID for this route
     priority <%= @priority  %> # 101 on master, 100 on backup
-    unicast_src_ip <%= node['keepalived-ec2']['unicast_src_ip'] %> # My IP
+    unicast_src_ip <%= @src %> # My IP
     unicast_peer {
-        <%= node['keepalived-ec2']['unicast_peer'] %> # peer IP
+        <%= @peer %> # peer IP
     }
     track_script {
         chk_lb

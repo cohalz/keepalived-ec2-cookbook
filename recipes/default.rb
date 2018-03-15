@@ -15,8 +15,8 @@ raise "Attribute: 'device_index' is not defined." if node['keepalived-ec2']['dev
 raise "Attribute: 'interface' is not defined." if node['keepalived-ec2']['interface'].nil?
 raise "Attribute: 'state' is not defined." if node['keepalived-ec2']['state'].nil?
 raise "Attribute: 'virtual_router_id' is not defined." if node['keepalived-ec2']['virtual_router_id'].nil?
-raise "Attribute: 'unicast_src_ip' is not defined." if node['keepalived-ec2']['unicast_src_ip'].nil?
-raise "Attribute: 'unicast_peer' is not defined." if node['keepalived-ec2']['unicast_peer'].nil?
+raise "Attribute: 'master_ip' is not defined." if node['keepalived-ec2']['master_ip'].nil?
+raise "Attribute: 'backup_ip' is not defined." if node['keepalived-ec2']['backup_ip'].nil?
 
 bash 'install grabeni' do
   user 'root'
@@ -49,8 +49,12 @@ end
 case node['keepalived-ec2']['state']
   when "MASTER" then
     priority = 101
+    src = node['keepalived-ec2']['master_ip']
+    peer = node['keepalived-ec2']['backup_ip']
   when "BACKUP" then
     priority = 100
+    src = node['keepalived-ec2']['backup_ip']
+    peer = node['keepalived-ec2']['master_ip']
   else
     raise "Attribute: 'state' must be 'MASTER' or 'BACKUP'."
 end
@@ -58,7 +62,9 @@ end
 template '/etc/keepalived/conf.d/keepalived.conf' do
   source 'keepalived.conf.erb'
     variables ({
-    :priority => priority
+    :priority => priority,
+    :src => src,
+    :peer => peer
   })
   notifies :restart, "service[keepalived]", :immediately
 end
