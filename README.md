@@ -63,7 +63,7 @@ e.g.
   <tr>
     <td><tt>['keepalived-ec2']['device_index']</tt></td>
     <td>String</td>
-    <td>Number of eth#{n} you want to set</td>
+    <td>Number of eth#{n} you want to set ENI</td>
     <td><tt></tt></td>
   </tr>
   <tr>
