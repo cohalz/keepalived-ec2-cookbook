@@ -45,14 +45,14 @@ e.g.
   <tr>
     <td><tt>['keepalived-ec2']['virtual_router_id']</tt></td>
     <td>String</td>
-    <td>virtual_router_id</td>
-    <td><tt></tt></td>
+    <td> `virtual_router_id`</td>
+    <td><tt>51</tt></td>
   </tr>
   <tr>
     <td><tt>['keepalived-ec2']['chk_script']</tt></td>
     <td>String</td>
-    <td>vrrp_script</td>
-    <td><tt></tt></td>
+    <td>`vrrp_script`</td>
+    <td><tt>pidof haproxy</tt></td>
   </tr>
   <tr>
     <td><tt>['keepalived-ec2']['eni']</tt></td>
@@ -87,10 +87,15 @@ e.g.
   <tr>
     <td><tt>['keepalived-ec2']['state']</tt></td>
     <td>String</td>
-    <td>MASTER or BACKUP</td>
+    <td> `MASTER` or `BACKUP`</td>
     <td><tt></tt></td>
   </tr>
-
+  <tr>
+    <td><tt>['keepalived-ec2']['conf_template']</tt></td>
+    <td>String</td>
+    <td>The source `template` to use when creating the `keepalived.conf`.</td>
+    <td><tt></tt></td>
+  </tr>
 
 </table>
 

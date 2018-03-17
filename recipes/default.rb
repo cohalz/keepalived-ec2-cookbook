@@ -60,7 +60,7 @@ case node['keepalived-ec2']['state']
 end
 
 template '/etc/keepalived/conf.d/keepalived.conf' do
-  source 'keepalived.conf.erb'
+  source node['keepalived-ec2']['conf_template']
     variables ({
     :priority => priority,
     :src => src,
