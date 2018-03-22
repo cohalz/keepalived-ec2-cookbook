@@ -4,6 +4,14 @@ A cookook for using keepalived in EC2-VPC environment.
 
 ## Requirements
 
+### AWS Access Key
+```
+ec2:DescribeInstances
+ec2:DescribeNetworkInterfaces
+ec2:AttachNetworkInterface
+ec2:DetachNetworkInterface
+```
+
 ### Platforms
 
 - Amazon Linux
